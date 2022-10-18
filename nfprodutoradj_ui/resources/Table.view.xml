@@ -1,0 +1,79 @@
+<mvc:View xmlns:core="sap.ui.core" controllerName="nfprodutoradj_ui.Table" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout">
+	<Page title="Tipo de nota Fiscal" titleLevel="H1" showHeader="true" showNavButton="true" navButtonPress=".onNavBack"
+		class="sapUiResponsiveContentPadding">
+		<content>
+			<Button type="Emphasized" text="+ Adicionar" press="add"/>
+			<l:VerticalLayout class="sapUiContentPadding" width="100%">
+				<l:dependents>
+					<core:Fragment fragmentName="nfprodutoradj_ui.AddDialog" type="XML"/>
+				</l:dependents>
+			</l:VerticalLayout>
+				<l:VerticalLayout class="sapUiContentPadding" width="100%">
+				<l:dependents>
+					<core:Fragment fragmentName="nfprodutoradj_ui.EditDialog" type="XML"/>
+				</l:dependents>
+			</l:VerticalLayout>
+			<Table items="{ path: '/TIPOS'}" id="tableTipoNf">
+				<columns >
+					<Column >
+						<Text text="EMPRESA"/>
+					</Column>
+					<Column >
+						<Text text="FILIAL"/>
+					</Column>
+					<Column >
+						<Text text="TIPO_NF"/>
+					</Column>
+					<Column >
+						<Text text="DT_INI"/>
+					</Column>
+					<Column >
+						<Text text="DT_FIN"/>
+					</Column>
+					<Column >
+						<Text text="Editar"/>
+					</Column>
+					<Column >
+						<Text text="Remover"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem >
+						<cells>
+							<Text text="{EMPRESA}"/>
+						</cells>
+						<cells>
+							<Text text="{FILIAL}"/>
+						</cells>
+						<cells>
+							<Text text="{SYS_TIPO_NF}"/>
+						</cells>
+						<cells>
+							<Text text="{DT_INI}"/>
+						</cells>
+						<cells>
+							<Text text="{DT_FIN}"/>
+						</cells>
+						<cells>
+							<Button id="modifyButton" icon="sap-icon://edit" press=".onEdit">
+								<customData>
+									<core:CustomData key="multi" value="{Id}"/>
+								</customData>
+							</Button>
+						</cells>
+						<cells>
+							<Button id="deleteButton" icon="sap-icon://delete" press=".onDelete">
+								<customData>
+									<core:CustomData key="multi" value="{Id}"/>
+								</customData>
+							</Button>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+		<footer>
+			<OverflowToolbar></OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>

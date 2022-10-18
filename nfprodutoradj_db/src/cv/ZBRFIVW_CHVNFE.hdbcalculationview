@@ -1,0 +1,1634 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="ZBRFIVW_CHVNFE" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="Changing chv_nfe"/>
+<localVariables>
+  <variable id="P_MANDT" parameter="true">
+    <descriptions defaultDescription="MANDT"/>
+    <variableProperties datatype="NVARCHAR" length="3" mandatory="true" defaultValue="">
+      <valueDomain type="empty"/>
+      <selection multiLine="false" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+  <variable id="P_EMPRESA" parameter="true">
+    <descriptions defaultDescription="EMPRESA"/>
+    <variableProperties datatype="NVARCHAR" length="4" mandatory="true" defaultValue="">
+      <valueDomain type="empty"/>
+      <selection multiLine="false" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+  <variable id="P_DT_INI" parameter="true">
+    <descriptions defaultDescription="Initial Date"/>
+    <variableProperties datatype="NVARCHAR" length="8" mandatory="true" defaultValue="">
+      <valueDomain type="empty"/>
+      <selection multiLine="false" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+  <variable id="P_DT_FIN" parameter="true">
+    <descriptions defaultDescription="Final Date"/>
+    <variableProperties datatype="NVARCHAR" length="8" mandatory="true" defaultValue="">
+      <valueDomain type="empty"/>
+      <selection multiLine="false" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+</localVariables>
+<variableMappings/>
+<dataSources>
+  <DataSource id="adejo.view::/TMF/V_EMP_FED">
+    <resourceUri>adejo.view::/TMF/V_EMP_FED</resourceUri>
+  </DataSource>
+  <DataSource id="adejo.view::/TMF/V_NF_DOC">
+    <resourceUri>adejo.view::/TMF/V_NF_DOC</resourceUri>
+  </DataSource>
+  <DataSource id="nfprodutoradj.nfprodutoradj_db.data::TIPO_NF">
+    <resourceUri>nfprodutoradj.nfprodutoradj_db.data::TIPO_NF</resourceUri>
+  </DataSource>
+  <DataSource id="adejo.view::NF_INF_COMPL">
+    <resourceUri>adejo.view::NF_INF_COMPL</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_EMP" filterExpressionLanguage="COLUMN_ENGINE">
+    <viewAttributes>
+      <viewAttribute id="MANDT_TDF"/>
+      <viewAttribute id="EMPRESA"/>
+      <viewAttribute id="ESTABELECIMENTO"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="adejo.view::/TMF/V_EMP_FED"/>
+    <filter>in(&quot;MANDT_TDF&quot;,'$$P_MANDT$$')and
+&quot;EMPRESA&quot;='$$P_EMPRESA$$'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_NF_DOC" filterExpressionLanguage="COLUMN_ENGINE">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="NF_ID"/>
+      <viewAttribute id="EMPRESA"/>
+      <viewAttribute id="FILIAL"/>
+      <viewAttribute id="IND_PGTO"/>
+      <viewAttribute id="DT_DOC"/>
+      <viewAttribute id="DT_E_S"/>
+      <viewAttribute id="SER"/>
+      <viewAttribute id="SUB"/>
+      <viewAttribute id="COD_PART"/>
+      <viewAttribute id="TIPO_PART"/>
+      <viewAttribute id="VEIC_ID"/>
+      <viewAttribute id="NUM_DOC"/>
+      <viewAttribute id="CNPJ_CPF"/>
+      <viewAttribute id="IND_EMIT"/>
+      <viewAttribute id="TIPO_EMIT"/>
+      <viewAttribute id="COD_SIT"/>
+      <viewAttribute id="IND_OPER"/>
+      <viewAttribute id="FATURA_ID"/>
+      <viewAttribute id="COD_MOD"/>
+      <viewAttribute id="CHV_NFE"/>
+      <viewAttribute id="UF"/>
+      <viewAttribute id="CANCELADO"/>
+      <viewAttribute id="CHV_CTE"/>
+      <viewAttribute id="TP_CT_E"/>
+      <viewAttribute id="COD_MUN_ORIG"/>
+      <viewAttribute id="COD_MUN_DEST"/>
+      <viewAttribute id="IND_FRT"/>
+      <viewAttribute id="COD_CTA"/>
+      <viewAttribute id="COD_CONS"/>
+      <viewAttribute id="TP_LIGACAO"/>
+      <viewAttribute id="COD_GRUPO_TENSAO"/>
+      <viewAttribute id="COD_MUN"/>
+      <viewAttribute id="UF_ID"/>
+      <viewAttribute id="PESO_LIQ"/>
+      <viewAttribute id="PESO_BRT"/>
+      <viewAttribute id="QTD_VOL"/>
+      <viewAttribute id="DIRECT"/>
+      <viewAttribute id="TP_ASSINANTE"/>
+      <viewAttribute id="NUM_DOC_RMD"/>
+      <viewAttribute id="NRO_ORD"/>
+      <viewAttribute id="COD_AUT"/>
+      <viewAttribute id="NOM_MOT"/>
+      <viewAttribute id="CPF"/>
+      <viewAttribute id="CNPJ_FILIAL"/>
+      <viewAttribute id="IE_FILIAL"/>
+      <viewAttribute id="IEST_FILIAL"/>
+      <viewAttribute id="IM_FILIAL"/>
+      <viewAttribute id="SUFRAMA_PARTNER"/>
+      <viewAttribute id="VAGAO"/>
+      <viewAttribute id="BALSA"/>
+      <viewAttribute id="DT_CANC"/>
+      <viewAttribute id="MARCA_VOL_TRANS"/>
+      <viewAttribute id="RPS"/>
+      <viewAttribute id="TIPO_RPS"/>
+      <viewAttribute id="SYS_TIPO_NF"/>
+      <viewAttribute id="VL_FORN"/>
+      <viewAttribute id="VL_SERV_NT"/>
+      <viewAttribute id="VL_TERC"/>
+      <viewAttribute id="VL_DA"/>
+      <viewAttribute id="CONS"/>
+      <viewAttribute id="VL_TOTAL_DOCUMENTO"/>
+      <viewAttribute id="NFE_SERV_NUM"/>
+      <viewAttribute id="HR_E_S"/>
+      <viewAttribute id="DT_AUTH"/>
+      <viewAttribute id="HR_AUTH"/>
+      <viewAttribute id="TIPO_OPER"/>
+      <viewAttribute id="IND_FINAL"/>
+      <viewAttribute id="PRE_COMPRADOR"/>
+      <viewAttribute id="CRT_BUPLA"/>
+      <viewAttribute id="XMLVERS"/>
+      <viewAttribute id="TPAMB"/>
+      <viewAttribute id="DOCSTAT"/>
+      <viewAttribute id="NOM_MEST"/>
+      <viewAttribute id="CHV_COD_DIG"/>
+      <viewAttribute id="IE"/>
+      <viewAttribute id="MUNICIPAL"/>
+      <viewAttribute id="IND_NAT_FRT"/>
+      <viewAttribute id="PCO_CATEGORY"/>
+      <viewAttribute id="NOME"/>
+      <viewAttribute id="ENDE"/>
+      <viewAttribute id="NUMERO"/>
+      <viewAttribute id="COMPL"/>
+      <viewAttribute id="BAIRRO"/>
+      <viewAttribute id="DESC_MUN"/>
+      <viewAttribute id="CEP"/>
+      <viewAttribute id="PAIS"/>
+      <viewAttribute id="NF_SRV"/>
+      <viewAttribute id="MOEDA"/>
+      <viewAttribute id="INCOTERMS1"/>
+      <viewAttribute id="IM"/>
+      <viewAttribute id="DOCREF"/>
+      <viewAttribute id="DT_LANCTO"/>
+      <viewAttribute id="DT_CRIACAO"/>
+      <viewAttribute id="NOME_USUARIO"/>
+      <viewAttribute id="MANUAL"/>
+      <viewAttribute id="OBSERVACAO"/>
+      <viewAttribute id="FUN_PARC"/>
+      <viewAttribute id="NUM_DOC_CONTABIL"/>
+      <viewAttribute id="CONTINGENCIA"/>
+      <viewAttribute id="TP_SERVICO"/>
+      <viewAttribute id="CHV_CONDICAO"/>
+      <viewAttribute id="DT_EXTEMPORANEA"/>
+      <viewAttribute id="NUM_UNIDADE_CONSUMIDORA"/>
+      <viewAttribute id="FASE_UTILIZACAO"/>
+      <viewAttribute id="NRO_TEL_PRINCIPAL"/>
+      <viewAttribute id="TP_INFORMACAO"/>
+      <viewAttribute id="TP_CLIENTE"/>
+      <viewAttribute id="SUBCLASSE_CONSUMO"/>
+      <viewAttribute id="CNPJ_EMITENTE"/>
+      <viewAttribute id="VL_TOTAL_FATURA_DOC"/>
+      <viewAttribute id="DT_LEIT_ANT"/>
+      <viewAttribute id="DT_LEIT_ATU"/>
+      <viewAttribute id="INFORMACOES_ADICIONAIS"/>
+      <viewAttribute id="NRO_FATURA"/>
+      <viewAttribute id="COD_AUTH"/>
+      <viewAttribute id="FONE"/>
+      <viewAttribute id="IND_IEDEST"/>
+      <viewAttribute id="CRT_PARTNER"/>
+      <viewAttribute id="CNAE_PARTNER"/>
+      <viewAttribute id="IND_CPRB"/>
+      <viewAttribute id="VL_MAT_TERC"/>
+      <viewAttribute id="VL_SUB"/>
+      <viewAttribute id="CHV_CTE_REF"/>
+      <viewAttribute id="DOCUMENT_STATUS"/>
+      <viewAttribute id="NFNUM_UTILITIES"/>
+      <viewAttribute id="COD_CTA_HEADER"/>
+      <viewAttribute id="NUM_DA"/>
+      <viewAttribute id="FIN_DOCE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="adejo.view::/TMF/V_NF_DOC"/>
+    <filter>in(&quot;MANDT&quot;,'$$P_MANDT$$')and
+&quot;EMPRESA&quot;='$$P_EMPRESA$$'and
+&quot;DT_DOC&quot;&gt;='$$P_DT_INI$$'and
+&quot;DT_DOC&quot;&lt;='$$P_DT_FIN$$' and
+&quot;COD_SIT&quot; != '02'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="J_NF_DOC" cardinality="CN_1" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="NF_ID"/>
+      <viewAttribute id="EMPRESA"/>
+      <viewAttribute id="FILIAL"/>
+      <viewAttribute id="IND_PGTO"/>
+      <viewAttribute id="DT_DOC"/>
+      <viewAttribute id="DT_E_S"/>
+      <viewAttribute id="SER"/>
+      <viewAttribute id="SUB"/>
+      <viewAttribute id="COD_PART"/>
+      <viewAttribute id="TIPO_PART"/>
+      <viewAttribute id="VEIC_ID"/>
+      <viewAttribute id="NUM_DOC"/>
+      <viewAttribute id="CNPJ_CPF"/>
+      <viewAttribute id="IND_EMIT"/>
+      <viewAttribute id="TIPO_EMIT"/>
+      <viewAttribute id="COD_SIT"/>
+      <viewAttribute id="IND_OPER"/>
+      <viewAttribute id="FATURA_ID"/>
+      <viewAttribute id="COD_MOD"/>
+      <viewAttribute id="CHV_NFE"/>
+      <viewAttribute id="UF"/>
+      <viewAttribute id="CANCELADO"/>
+      <viewAttribute id="CHV_CTE"/>
+      <viewAttribute id="TP_CT_E"/>
+      <viewAttribute id="COD_MUN_ORIG"/>
+      <viewAttribute id="COD_MUN_DEST"/>
+      <viewAttribute id="IND_FRT"/>
+      <viewAttribute id="COD_CTA"/>
+      <viewAttribute id="COD_CONS"/>
+      <viewAttribute id="TP_LIGACAO"/>
+      <viewAttribute id="COD_GRUPO_TENSAO"/>
+      <viewAttribute id="COD_MUN"/>
+      <viewAttribute id="UF_ID"/>
+      <viewAttribute id="PESO_LIQ"/>
+      <viewAttribute id="PESO_BRT"/>
+      <viewAttribute id="QTD_VOL"/>
+      <viewAttribute id="DIRECT"/>
+      <viewAttribute id="TP_ASSINANTE"/>
+      <viewAttribute id="NUM_DOC_RMD"/>
+      <viewAttribute id="NRO_ORD"/>
+      <viewAttribute id="COD_AUT"/>
+      <viewAttribute id="NOM_MOT"/>
+      <viewAttribute id="CPF"/>
+      <viewAttribute id="CNPJ_FILIAL"/>
+      <viewAttribute id="IE_FILIAL"/>
+      <viewAttribute id="IEST_FILIAL"/>
+      <viewAttribute id="IM_FILIAL"/>
+      <viewAttribute id="SUFRAMA_PARTNER"/>
+      <viewAttribute id="VAGAO"/>
+      <viewAttribute id="BALSA"/>
+      <viewAttribute id="DT_CANC"/>
+      <viewAttribute id="MARCA_VOL_TRANS"/>
+      <viewAttribute id="RPS"/>
+      <viewAttribute id="TIPO_RPS"/>
+      <viewAttribute id="SYS_TIPO_NF"/>
+      <viewAttribute id="VL_FORN"/>
+      <viewAttribute id="VL_SERV_NT"/>
+      <viewAttribute id="VL_TERC"/>
+      <viewAttribute id="VL_DA"/>
+      <viewAttribute id="CONS"/>
+      <viewAttribute id="VL_TOTAL_DOCUMENTO"/>
+      <viewAttribute id="NFE_SERV_NUM"/>
+      <viewAttribute id="HR_E_S"/>
+      <viewAttribute id="DT_AUTH"/>
+      <viewAttribute id="HR_AUTH"/>
+      <viewAttribute id="TIPO_OPER"/>
+      <viewAttribute id="IND_FINAL"/>
+      <viewAttribute id="PRE_COMPRADOR"/>
+      <viewAttribute id="CRT_BUPLA"/>
+      <viewAttribute id="XMLVERS"/>
+      <viewAttribute id="TPAMB"/>
+      <viewAttribute id="DOCSTAT"/>
+      <viewAttribute id="NOM_MEST"/>
+      <viewAttribute id="CHV_COD_DIG"/>
+      <viewAttribute id="IE"/>
+      <viewAttribute id="MUNICIPAL"/>
+      <viewAttribute id="IND_NAT_FRT"/>
+      <viewAttribute id="PCO_CATEGORY"/>
+      <viewAttribute id="NOME"/>
+      <viewAttribute id="ENDE"/>
+      <viewAttribute id="NUMERO"/>
+      <viewAttribute id="COMPL"/>
+      <viewAttribute id="BAIRRO"/>
+      <viewAttribute id="DESC_MUN"/>
+      <viewAttribute id="CEP"/>
+      <viewAttribute id="PAIS"/>
+      <viewAttribute id="NF_SRV"/>
+      <viewAttribute id="MOEDA"/>
+      <viewAttribute id="INCOTERMS1"/>
+      <viewAttribute id="IM"/>
+      <viewAttribute id="DOCREF"/>
+      <viewAttribute id="DT_LANCTO"/>
+      <viewAttribute id="DT_CRIACAO"/>
+      <viewAttribute id="NOME_USUARIO"/>
+      <viewAttribute id="MANUAL"/>
+      <viewAttribute id="OBSERVACAO"/>
+      <viewAttribute id="FUN_PARC"/>
+      <viewAttribute id="NUM_DOC_CONTABIL"/>
+      <viewAttribute id="CONTINGENCIA"/>
+      <viewAttribute id="TP_SERVICO"/>
+      <viewAttribute id="CHV_CONDICAO"/>
+      <viewAttribute id="DT_EXTEMPORANEA"/>
+      <viewAttribute id="NUM_UNIDADE_CONSUMIDORA"/>
+      <viewAttribute id="FASE_UTILIZACAO"/>
+      <viewAttribute id="NRO_TEL_PRINCIPAL"/>
+      <viewAttribute id="TP_INFORMACAO"/>
+      <viewAttribute id="TP_CLIENTE"/>
+      <viewAttribute id="SUBCLASSE_CONSUMO"/>
+      <viewAttribute id="CNPJ_EMITENTE"/>
+      <viewAttribute id="VL_TOTAL_FATURA_DOC"/>
+      <viewAttribute id="DT_LEIT_ANT"/>
+      <viewAttribute id="DT_LEIT_ATU"/>
+      <viewAttribute id="INFORMACOES_ADICIONAIS"/>
+      <viewAttribute id="NRO_FATURA"/>
+      <viewAttribute id="COD_AUTH"/>
+      <viewAttribute id="FONE"/>
+      <viewAttribute id="IND_IEDEST"/>
+      <viewAttribute id="CRT_PARTNER"/>
+      <viewAttribute id="CNAE_PARTNER"/>
+      <viewAttribute id="IND_CPRB"/>
+      <viewAttribute id="VL_MAT_TERC"/>
+      <viewAttribute id="VL_SUB"/>
+      <viewAttribute id="CHV_CTE_REF"/>
+      <viewAttribute id="DOCUMENT_STATUS"/>
+      <viewAttribute id="NFNUM_UTILITIES"/>
+      <viewAttribute id="COD_CTA_HEADER"/>
+      <viewAttribute id="NUM_DA"/>
+      <viewAttribute id="FIN_DOCE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="P_NF_DOC">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NF_ID" source="NF_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPRESA" source="EMPRESA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FILIAL" source="FILIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IND_PGTO" source="IND_PGTO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_DOC" source="DT_DOC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_E_S" source="DT_E_S"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SER" source="SER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUB" source="SUB"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_PART" source="COD_PART"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIPO_PART" source="TIPO_PART"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VEIC_ID" source="VEIC_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUM_DOC" source="NUM_DOC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNPJ_CPF" source="CNPJ_CPF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IND_EMIT" source="IND_EMIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIPO_EMIT" source="TIPO_EMIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_SIT" source="COD_SIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IND_OPER" source="IND_OPER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FATURA_ID" source="FATURA_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_MOD" source="COD_MOD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHV_NFE" source="CHV_NFE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="UF" source="UF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CANCELADO" source="CANCELADO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHV_CTE" source="CHV_CTE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TP_CT_E" source="TP_CT_E"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_MUN_ORIG" source="COD_MUN_ORIG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_MUN_DEST" source="COD_MUN_DEST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IND_FRT" source="IND_FRT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_CTA" source="COD_CTA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_CONS" source="COD_CONS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TP_LIGACAO" source="TP_LIGACAO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_GRUPO_TENSAO" source="COD_GRUPO_TENSAO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_MUN" source="COD_MUN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="UF_ID" source="UF_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PESO_LIQ" source="PESO_LIQ"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PESO_BRT" source="PESO_BRT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QTD_VOL" source="QTD_VOL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIRECT" source="DIRECT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TP_ASSINANTE" source="TP_ASSINANTE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUM_DOC_RMD" source="NUM_DOC_RMD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NRO_ORD" source="NRO_ORD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_AUT" source="COD_AUT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NOM_MOT" source="NOM_MOT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CPF" source="CPF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNPJ_FILIAL" source="CNPJ_FILIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IE_FILIAL" source="IE_FILIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IEST_FILIAL" source="IEST_FILIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IM_FILIAL" source="IM_FILIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUFRAMA_PARTNER" source="SUFRAMA_PARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VAGAO" source="VAGAO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BALSA" source="BALSA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_CANC" source="DT_CANC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MARCA_VOL_TRANS" source="MARCA_VOL_TRANS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RPS" source="RPS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIPO_RPS" source="TIPO_RPS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SYS_TIPO_NF" source="SYS_TIPO_NF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VL_FORN" source="VL_FORN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VL_SERV_NT" source="VL_SERV_NT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VL_TERC" source="VL_TERC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VL_DA" source="VL_DA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONS" source="CONS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VL_TOTAL_DOCUMENTO" source="VL_TOTAL_DOCUMENTO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NFE_SERV_NUM" source="NFE_SERV_NUM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HR_E_S" source="HR_E_S"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_AUTH" source="DT_AUTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HR_AUTH" source="HR_AUTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIPO_OPER" source="TIPO_OPER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IND_FINAL" source="IND_FINAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRE_COMPRADOR" source="PRE_COMPRADOR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CRT_BUPLA" source="CRT_BUPLA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="XMLVERS" source="XMLVERS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TPAMB" source="TPAMB"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DOCSTAT" source="DOCSTAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NOM_MEST" source="NOM_MEST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHV_COD_DIG" source="CHV_COD_DIG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IE" source="IE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MUNICIPAL" source="MUNICIPAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IND_NAT_FRT" source="IND_NAT_FRT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PCO_CATEGORY" source="PCO_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NOME" source="NOME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ENDE" source="ENDE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUMERO" source="NUMERO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPL" source="COMPL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BAIRRO" source="BAIRRO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESC_MUN" source="DESC_MUN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CEP" source="CEP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PAIS" source="PAIS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NF_SRV" source="NF_SRV"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MOEDA" source="MOEDA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INCOTERMS1" source="INCOTERMS1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IM" source="IM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DOCREF" source="DOCREF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_LANCTO" source="DT_LANCTO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_CRIACAO" source="DT_CRIACAO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NOME_USUARIO" source="NOME_USUARIO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANUAL" source="MANUAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OBSERVACAO" source="OBSERVACAO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FUN_PARC" source="FUN_PARC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUM_DOC_CONTABIL" source="NUM_DOC_CONTABIL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONTINGENCIA" source="CONTINGENCIA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TP_SERVICO" source="TP_SERVICO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHV_CONDICAO" source="CHV_CONDICAO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_EXTEMPORANEA" source="DT_EXTEMPORANEA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUM_UNIDADE_CONSUMIDORA" source="NUM_UNIDADE_CONSUMIDORA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FASE_UTILIZACAO" source="FASE_UTILIZACAO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NRO_TEL_PRINCIPAL" source="NRO_TEL_PRINCIPAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TP_INFORMACAO" source="TP_INFORMACAO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TP_CLIENTE" source="TP_CLIENTE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUBCLASSE_CONSUMO" source="SUBCLASSE_CONSUMO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNPJ_EMITENTE" source="CNPJ_EMITENTE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VL_TOTAL_FATURA_DOC" source="VL_TOTAL_FATURA_DOC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_LEIT_ANT" source="DT_LEIT_ANT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_LEIT_ATU" source="DT_LEIT_ATU"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INFORMACOES_ADICIONAIS" source="INFORMACOES_ADICIONAIS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NRO_FATURA" source="NRO_FATURA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_AUTH" source="COD_AUTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FONE" source="FONE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IND_IEDEST" source="IND_IEDEST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CRT_PARTNER" source="CRT_PARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNAE_PARTNER" source="CNAE_PARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IND_CPRB" source="IND_CPRB"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VL_MAT_TERC" source="VL_MAT_TERC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VL_SUB" source="VL_SUB"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHV_CTE_REF" source="CHV_CTE_REF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DOCUMENT_STATUS" source="DOCUMENT_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NFNUM_UTILITIES" source="NFNUM_UTILITIES"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_CTA_HEADER" source="COD_CTA_HEADER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUM_DA" source="NUM_DA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FIN_DOCE" source="FIN_DOCE"/>
+    </input>
+    <input node="P_EMP">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT_TDF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPRESA" source="EMPRESA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FILIAL" source="ESTABELECIMENTO"/>
+    </input>
+    <joinAttribute name="MANDT"/>
+    <joinAttribute name="EMPRESA"/>
+    <joinAttribute name="FILIAL"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="P_PARAM" filterExpressionLanguage="COLUMN_ENGINE">
+    <viewAttributes>
+      <viewAttribute id="EMPRESA"/>
+      <viewAttribute id="FILIAL"/>
+      <viewAttribute id="SYS_TIPO_NF"/>
+      <viewAttribute id="DT_INI"/>
+      <viewAttribute id="DT_FIN"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="nfprodutoradj.nfprodutoradj_db.data::TIPO_NF"/>
+    <filter>&quot;EMPRESA&quot;='$$P_EMPRESA$$' and
+&quot;DT_INI&quot;&lt;='$$P_DT_INI$$' and
+&quot;DT_FIN&quot;&gt;='$$P_DT_FIN$$'</filter>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="J_PARAM" cardinality="CN_1" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="NF_ID"/>
+      <viewAttribute id="EMPRESA"/>
+      <viewAttribute id="FILIAL"/>
+      <viewAttribute id="IND_PGTO"/>
+      <viewAttribute id="DT_DOC"/>
+      <viewAttribute id="DT_E_S"/>
+      <viewAttribute id="SER"/>
+      <viewAttribute id="SUB"/>
+      <viewAttribute id="COD_PART"/>
+      <viewAttribute id="TIPO_PART"/>
+      <viewAttribute id="VEIC_ID"/>
+      <viewAttribute id="NUM_DOC"/>
+      <viewAttribute id="CNPJ_CPF"/>
+      <viewAttribute id="IND_EMIT"/>
+      <viewAttribute id="TIPO_EMIT"/>
+      <viewAttribute id="COD_SIT"/>
+      <viewAttribute id="IND_OPER"/>
+      <viewAttribute id="FATURA_ID"/>
+      <viewAttribute id="COD_MOD"/>
+      <viewAttribute id="CHV_NFE"/>
+      <viewAttribute id="UF"/>
+      <viewAttribute id="CANCELADO"/>
+      <viewAttribute id="CHV_CTE"/>
+      <viewAttribute id="TP_CT_E"/>
+      <viewAttribute id="COD_MUN_ORIG"/>
+      <viewAttribute id="COD_MUN_DEST"/>
+      <viewAttribute id="IND_FRT"/>
+      <viewAttribute id="COD_CTA"/>
+      <viewAttribute id="COD_CONS"/>
+      <viewAttribute id="TP_LIGACAO"/>
+      <viewAttribute id="COD_GRUPO_TENSAO"/>
+      <viewAttribute id="COD_MUN"/>
+      <viewAttribute id="UF_ID"/>
+      <viewAttribute id="PESO_LIQ"/>
+      <viewAttribute id="PESO_BRT"/>
+      <viewAttribute id="QTD_VOL"/>
+      <viewAttribute id="DIRECT"/>
+      <viewAttribute id="TP_ASSINANTE"/>
+      <viewAttribute id="NUM_DOC_RMD"/>
+      <viewAttribute id="NRO_ORD"/>
+      <viewAttribute id="COD_AUT"/>
+      <viewAttribute id="NOM_MOT"/>
+      <viewAttribute id="CPF"/>
+      <viewAttribute id="CNPJ_FILIAL"/>
+      <viewAttribute id="IE_FILIAL"/>
+      <viewAttribute id="IEST_FILIAL"/>
+      <viewAttribute id="IM_FILIAL"/>
+      <viewAttribute id="SUFRAMA_PARTNER"/>
+      <viewAttribute id="VAGAO"/>
+      <viewAttribute id="BALSA"/>
+      <viewAttribute id="DT_CANC"/>
+      <viewAttribute id="MARCA_VOL_TRANS"/>
+      <viewAttribute id="RPS"/>
+      <viewAttribute id="TIPO_RPS"/>
+      <viewAttribute id="SYS_TIPO_NF"/>
+      <viewAttribute id="VL_FORN"/>
+      <viewAttribute id="VL_SERV_NT"/>
+      <viewAttribute id="VL_TERC"/>
+      <viewAttribute id="VL_DA"/>
+      <viewAttribute id="CONS"/>
+      <viewAttribute id="VL_TOTAL_DOCUMENTO"/>
+      <viewAttribute id="NFE_SERV_NUM"/>
+      <viewAttribute id="HR_E_S"/>
+      <viewAttribute id="DT_AUTH"/>
+      <viewAttribute id="HR_AUTH"/>
+      <viewAttribute id="TIPO_OPER"/>
+      <viewAttribute id="IND_FINAL"/>
+      <viewAttribute id="PRE_COMPRADOR"/>
+      <viewAttribute id="CRT_BUPLA"/>
+      <viewAttribute id="XMLVERS"/>
+      <viewAttribute id="TPAMB"/>
+      <viewAttribute id="DOCSTAT"/>
+      <viewAttribute id="NOM_MEST"/>
+      <viewAttribute id="CHV_COD_DIG"/>
+      <viewAttribute id="IE"/>
+      <viewAttribute id="MUNICIPAL"/>
+      <viewAttribute id="IND_NAT_FRT"/>
+      <viewAttribute id="PCO_CATEGORY"/>
+      <viewAttribute id="NOME"/>
+      <viewAttribute id="ENDE"/>
+      <viewAttribute id="NUMERO"/>
+      <viewAttribute id="COMPL"/>
+      <viewAttribute id="BAIRRO"/>
+      <viewAttribute id="DESC_MUN"/>
+      <viewAttribute id="CEP"/>
+      <viewAttribute id="PAIS"/>
+      <viewAttribute id="NF_SRV"/>
+      <viewAttribute id="MOEDA"/>
+      <viewAttribute id="INCOTERMS1"/>
+      <viewAttribute id="IM"/>
+      <viewAttribute id="DOCREF"/>
+      <viewAttribute id="DT_LANCTO"/>
+      <viewAttribute id="DT_CRIACAO"/>
+      <viewAttribute id="NOME_USUARIO"/>
+      <viewAttribute id="MANUAL"/>
+      <viewAttribute id="OBSERVACAO"/>
+      <viewAttribute id="FUN_PARC"/>
+      <viewAttribute id="NUM_DOC_CONTABIL"/>
+      <viewAttribute id="CONTINGENCIA"/>
+      <viewAttribute id="TP_SERVICO"/>
+      <viewAttribute id="CHV_CONDICAO"/>
+      <viewAttribute id="DT_EXTEMPORANEA"/>
+      <viewAttribute id="NUM_UNIDADE_CONSUMIDORA"/>
+      <viewAttribute id="FASE_UTILIZACAO"/>
+      <viewAttribute id="NRO_TEL_PRINCIPAL"/>
+      <viewAttribute id="TP_INFORMACAO"/>
+      <viewAttribute id="TP_CLIENTE"/>
+      <viewAttribute id="SUBCLASSE_CONSUMO"/>
+      <viewAttribute id="CNPJ_EMITENTE"/>
+      <viewAttribute id="VL_TOTAL_FATURA_DOC"/>
+      <viewAttribute id="DT_LEIT_ANT"/>
+      <viewAttribute id="DT_LEIT_ATU"/>
+      <viewAttribute id="INFORMACOES_ADICIONAIS"/>
+      <viewAttribute id="NRO_FATURA"/>
+      <viewAttribute id="COD_AUTH"/>
+      <viewAttribute id="FONE"/>
+      <viewAttribute id="IND_IEDEST"/>
+      <viewAttribute id="CRT_PARTNER"/>
+      <viewAttribute id="CNAE_PARTNER"/>
+      <viewAttribute id="IND_CPRB"/>
+      <viewAttribute id="VL_MAT_TERC"/>
+      <viewAttribute id="VL_SUB"/>
+      <viewAttribute id="CHV_CTE_REF"/>
+      <viewAttribute id="DOCUMENT_STATUS"/>
+      <viewAttribute id="NFNUM_UTILITIES"/>
+      <viewAttribute id="COD_CTA_HEADER"/>
+      <viewAttribute id="NUM_DA"/>
+      <viewAttribute id="FIN_DOCE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="J_NF_DOC">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NF_ID" source="NF_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPRESA" source="EMPRESA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FILIAL" source="FILIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IND_PGTO" source="IND_PGTO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_DOC" source="DT_DOC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_E_S" source="DT_E_S"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SER" source="SER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUB" source="SUB"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_PART" source="COD_PART"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIPO_PART" source="TIPO_PART"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VEIC_ID" source="VEIC_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUM_DOC" source="NUM_DOC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNPJ_CPF" source="CNPJ_CPF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IND_EMIT" source="IND_EMIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIPO_EMIT" source="TIPO_EMIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_SIT" source="COD_SIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IND_OPER" source="IND_OPER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FATURA_ID" source="FATURA_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_MOD" source="COD_MOD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHV_NFE" source="CHV_NFE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="UF" source="UF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CANCELADO" source="CANCELADO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHV_CTE" source="CHV_CTE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TP_CT_E" source="TP_CT_E"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_MUN_ORIG" source="COD_MUN_ORIG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_MUN_DEST" source="COD_MUN_DEST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IND_FRT" source="IND_FRT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_CTA" source="COD_CTA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_CONS" source="COD_CONS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TP_LIGACAO" source="TP_LIGACAO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_GRUPO_TENSAO" source="COD_GRUPO_TENSAO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_MUN" source="COD_MUN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="UF_ID" source="UF_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PESO_LIQ" source="PESO_LIQ"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PESO_BRT" source="PESO_BRT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QTD_VOL" source="QTD_VOL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIRECT" source="DIRECT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TP_ASSINANTE" source="TP_ASSINANTE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUM_DOC_RMD" source="NUM_DOC_RMD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NRO_ORD" source="NRO_ORD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_AUT" source="COD_AUT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NOM_MOT" source="NOM_MOT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CPF" source="CPF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNPJ_FILIAL" source="CNPJ_FILIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IE_FILIAL" source="IE_FILIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IEST_FILIAL" source="IEST_FILIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IM_FILIAL" source="IM_FILIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUFRAMA_PARTNER" source="SUFRAMA_PARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VAGAO" source="VAGAO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BALSA" source="BALSA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_CANC" source="DT_CANC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MARCA_VOL_TRANS" source="MARCA_VOL_TRANS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RPS" source="RPS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIPO_RPS" source="TIPO_RPS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SYS_TIPO_NF" source="SYS_TIPO_NF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VL_FORN" source="VL_FORN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VL_SERV_NT" source="VL_SERV_NT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VL_TERC" source="VL_TERC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VL_DA" source="VL_DA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONS" source="CONS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VL_TOTAL_DOCUMENTO" source="VL_TOTAL_DOCUMENTO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NFE_SERV_NUM" source="NFE_SERV_NUM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HR_E_S" source="HR_E_S"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_AUTH" source="DT_AUTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HR_AUTH" source="HR_AUTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIPO_OPER" source="TIPO_OPER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IND_FINAL" source="IND_FINAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRE_COMPRADOR" source="PRE_COMPRADOR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CRT_BUPLA" source="CRT_BUPLA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="XMLVERS" source="XMLVERS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TPAMB" source="TPAMB"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DOCSTAT" source="DOCSTAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NOM_MEST" source="NOM_MEST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHV_COD_DIG" source="CHV_COD_DIG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IE" source="IE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MUNICIPAL" source="MUNICIPAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IND_NAT_FRT" source="IND_NAT_FRT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PCO_CATEGORY" source="PCO_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NOME" source="NOME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ENDE" source="ENDE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUMERO" source="NUMERO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPL" source="COMPL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BAIRRO" source="BAIRRO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESC_MUN" source="DESC_MUN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CEP" source="CEP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PAIS" source="PAIS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NF_SRV" source="NF_SRV"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MOEDA" source="MOEDA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INCOTERMS1" source="INCOTERMS1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IM" source="IM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DOCREF" source="DOCREF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_LANCTO" source="DT_LANCTO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_CRIACAO" source="DT_CRIACAO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NOME_USUARIO" source="NOME_USUARIO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANUAL" source="MANUAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OBSERVACAO" source="OBSERVACAO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FUN_PARC" source="FUN_PARC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUM_DOC_CONTABIL" source="NUM_DOC_CONTABIL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONTINGENCIA" source="CONTINGENCIA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TP_SERVICO" source="TP_SERVICO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHV_CONDICAO" source="CHV_CONDICAO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_EXTEMPORANEA" source="DT_EXTEMPORANEA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUM_UNIDADE_CONSUMIDORA" source="NUM_UNIDADE_CONSUMIDORA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FASE_UTILIZACAO" source="FASE_UTILIZACAO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NRO_TEL_PRINCIPAL" source="NRO_TEL_PRINCIPAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TP_INFORMACAO" source="TP_INFORMACAO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TP_CLIENTE" source="TP_CLIENTE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUBCLASSE_CONSUMO" source="SUBCLASSE_CONSUMO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNPJ_EMITENTE" source="CNPJ_EMITENTE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VL_TOTAL_FATURA_DOC" source="VL_TOTAL_FATURA_DOC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_LEIT_ANT" source="DT_LEIT_ANT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_LEIT_ATU" source="DT_LEIT_ATU"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INFORMACOES_ADICIONAIS" source="INFORMACOES_ADICIONAIS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NRO_FATURA" source="NRO_FATURA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_AUTH" source="COD_AUTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FONE" source="FONE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IND_IEDEST" source="IND_IEDEST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CRT_PARTNER" source="CRT_PARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNAE_PARTNER" source="CNAE_PARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IND_CPRB" source="IND_CPRB"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VL_MAT_TERC" source="VL_MAT_TERC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VL_SUB" source="VL_SUB"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHV_CTE_REF" source="CHV_CTE_REF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DOCUMENT_STATUS" source="DOCUMENT_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NFNUM_UTILITIES" source="NFNUM_UTILITIES"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_CTA_HEADER" source="COD_CTA_HEADER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUM_DA" source="NUM_DA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FIN_DOCE" source="FIN_DOCE"/>
+    </input>
+    <input node="P_PARAM">
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPRESA" source="EMPRESA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FILIAL" source="FILIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SYS_TIPO_NF" source="SYS_TIPO_NF"/>
+    </input>
+    <joinAttribute name="EMPRESA"/>
+    <joinAttribute name="FILIAL"/>
+    <joinAttribute name="SYS_TIPO_NF"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="J_TXT" cardinality="CN_1" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="TXT"/>
+      <viewAttribute id="MANDT"/>
+      <viewAttribute id="NF_ID"/>
+      <viewAttribute id="EMPRESA"/>
+      <viewAttribute id="FILIAL"/>
+      <viewAttribute id="IND_PGTO"/>
+      <viewAttribute id="DT_DOC"/>
+      <viewAttribute id="DT_E_S"/>
+      <viewAttribute id="SER"/>
+      <viewAttribute id="SUB"/>
+      <viewAttribute id="COD_PART"/>
+      <viewAttribute id="TIPO_PART"/>
+      <viewAttribute id="VEIC_ID"/>
+      <viewAttribute id="NUM_DOC"/>
+      <viewAttribute id="CNPJ_CPF"/>
+      <viewAttribute id="IND_EMIT"/>
+      <viewAttribute id="TIPO_EMIT"/>
+      <viewAttribute id="COD_SIT"/>
+      <viewAttribute id="IND_OPER"/>
+      <viewAttribute id="FATURA_ID"/>
+      <viewAttribute id="COD_MOD"/>
+      <viewAttribute id="CHV_NFE"/>
+      <viewAttribute id="UF"/>
+      <viewAttribute id="CANCELADO"/>
+      <viewAttribute id="CHV_CTE"/>
+      <viewAttribute id="TP_CT_E"/>
+      <viewAttribute id="COD_MUN_ORIG"/>
+      <viewAttribute id="COD_MUN_DEST"/>
+      <viewAttribute id="IND_FRT"/>
+      <viewAttribute id="COD_CTA"/>
+      <viewAttribute id="COD_CONS"/>
+      <viewAttribute id="TP_LIGACAO"/>
+      <viewAttribute id="COD_GRUPO_TENSAO"/>
+      <viewAttribute id="COD_MUN"/>
+      <viewAttribute id="UF_ID"/>
+      <viewAttribute id="PESO_LIQ"/>
+      <viewAttribute id="PESO_BRT"/>
+      <viewAttribute id="QTD_VOL"/>
+      <viewAttribute id="DIRECT"/>
+      <viewAttribute id="TP_ASSINANTE"/>
+      <viewAttribute id="NUM_DOC_RMD"/>
+      <viewAttribute id="NRO_ORD"/>
+      <viewAttribute id="COD_AUT"/>
+      <viewAttribute id="NOM_MOT"/>
+      <viewAttribute id="CPF"/>
+      <viewAttribute id="CNPJ_FILIAL"/>
+      <viewAttribute id="IE_FILIAL"/>
+      <viewAttribute id="IEST_FILIAL"/>
+      <viewAttribute id="IM_FILIAL"/>
+      <viewAttribute id="SUFRAMA_PARTNER"/>
+      <viewAttribute id="VAGAO"/>
+      <viewAttribute id="BALSA"/>
+      <viewAttribute id="DT_CANC"/>
+      <viewAttribute id="MARCA_VOL_TRANS"/>
+      <viewAttribute id="RPS"/>
+      <viewAttribute id="TIPO_RPS"/>
+      <viewAttribute id="SYS_TIPO_NF"/>
+      <viewAttribute id="VL_FORN"/>
+      <viewAttribute id="VL_SERV_NT"/>
+      <viewAttribute id="VL_TERC"/>
+      <viewAttribute id="VL_DA"/>
+      <viewAttribute id="CONS"/>
+      <viewAttribute id="VL_TOTAL_DOCUMENTO"/>
+      <viewAttribute id="NFE_SERV_NUM"/>
+      <viewAttribute id="HR_E_S"/>
+      <viewAttribute id="DT_AUTH"/>
+      <viewAttribute id="HR_AUTH"/>
+      <viewAttribute id="TIPO_OPER"/>
+      <viewAttribute id="IND_FINAL"/>
+      <viewAttribute id="PRE_COMPRADOR"/>
+      <viewAttribute id="CRT_BUPLA"/>
+      <viewAttribute id="XMLVERS"/>
+      <viewAttribute id="TPAMB"/>
+      <viewAttribute id="DOCSTAT"/>
+      <viewAttribute id="NOM_MEST"/>
+      <viewAttribute id="CHV_COD_DIG"/>
+      <viewAttribute id="IE"/>
+      <viewAttribute id="MUNICIPAL"/>
+      <viewAttribute id="IND_NAT_FRT"/>
+      <viewAttribute id="PCO_CATEGORY"/>
+      <viewAttribute id="NOME"/>
+      <viewAttribute id="ENDE"/>
+      <viewAttribute id="NUMERO"/>
+      <viewAttribute id="COMPL"/>
+      <viewAttribute id="BAIRRO"/>
+      <viewAttribute id="DESC_MUN"/>
+      <viewAttribute id="CEP"/>
+      <viewAttribute id="PAIS"/>
+      <viewAttribute id="NF_SRV"/>
+      <viewAttribute id="MOEDA"/>
+      <viewAttribute id="INCOTERMS1"/>
+      <viewAttribute id="IM"/>
+      <viewAttribute id="DOCREF"/>
+      <viewAttribute id="DT_LANCTO"/>
+      <viewAttribute id="DT_CRIACAO"/>
+      <viewAttribute id="NOME_USUARIO"/>
+      <viewAttribute id="MANUAL"/>
+      <viewAttribute id="OBSERVACAO"/>
+      <viewAttribute id="FUN_PARC"/>
+      <viewAttribute id="NUM_DOC_CONTABIL"/>
+      <viewAttribute id="CONTINGENCIA"/>
+      <viewAttribute id="TP_SERVICO"/>
+      <viewAttribute id="CHV_CONDICAO"/>
+      <viewAttribute id="DT_EXTEMPORANEA"/>
+      <viewAttribute id="NUM_UNIDADE_CONSUMIDORA"/>
+      <viewAttribute id="FASE_UTILIZACAO"/>
+      <viewAttribute id="NRO_TEL_PRINCIPAL"/>
+      <viewAttribute id="TP_INFORMACAO"/>
+      <viewAttribute id="TP_CLIENTE"/>
+      <viewAttribute id="SUBCLASSE_CONSUMO"/>
+      <viewAttribute id="CNPJ_EMITENTE"/>
+      <viewAttribute id="VL_TOTAL_FATURA_DOC"/>
+      <viewAttribute id="DT_LEIT_ANT"/>
+      <viewAttribute id="DT_LEIT_ATU"/>
+      <viewAttribute id="INFORMACOES_ADICIONAIS"/>
+      <viewAttribute id="NRO_FATURA"/>
+      <viewAttribute id="COD_AUTH"/>
+      <viewAttribute id="FONE"/>
+      <viewAttribute id="IND_IEDEST"/>
+      <viewAttribute id="CRT_PARTNER"/>
+      <viewAttribute id="CNAE_PARTNER"/>
+      <viewAttribute id="IND_CPRB"/>
+      <viewAttribute id="VL_MAT_TERC"/>
+      <viewAttribute id="VL_SUB"/>
+      <viewAttribute id="CHV_CTE_REF"/>
+      <viewAttribute id="DOCUMENT_STATUS"/>
+      <viewAttribute id="NFNUM_UTILITIES"/>
+      <viewAttribute id="COD_CTA_HEADER"/>
+      <viewAttribute id="NUM_DA"/>
+      <viewAttribute id="FIN_DOCE"/>
+      <viewAttribute hidden="true" id="JOIN$MANDT$MANDT"/>
+      <viewAttribute hidden="true" id="JOIN$NF_ID$NF_ID"/>
+      <viewAttribute hidden="true" id="JOIN$EMPRESA$EMPRESA"/>
+      <viewAttribute hidden="true" id="JOIN$FILIAL$FILIAL"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="adejo.view::NF_INF_COMPL">
+      <mapping xsi:type="Calculation:AttributeMapping" target="TXT" source="TXT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$NF_ID$NF_ID" source="NF_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPRESA$EMPRESA" source="EMPRESA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$FILIAL$FILIAL" source="FILIAL"/>
+    </input>
+    <input node="J_PARAM">
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NF_ID" source="NF_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMPRESA" source="EMPRESA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FILIAL" source="FILIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IND_PGTO" source="IND_PGTO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_DOC" source="DT_DOC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_E_S" source="DT_E_S"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SER" source="SER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUB" source="SUB"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_PART" source="COD_PART"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIPO_PART" source="TIPO_PART"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VEIC_ID" source="VEIC_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUM_DOC" source="NUM_DOC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNPJ_CPF" source="CNPJ_CPF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IND_EMIT" source="IND_EMIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIPO_EMIT" source="TIPO_EMIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_SIT" source="COD_SIT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IND_OPER" source="IND_OPER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FATURA_ID" source="FATURA_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_MOD" source="COD_MOD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHV_NFE" source="CHV_NFE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="UF" source="UF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CANCELADO" source="CANCELADO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHV_CTE" source="CHV_CTE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TP_CT_E" source="TP_CT_E"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_MUN_ORIG" source="COD_MUN_ORIG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_MUN_DEST" source="COD_MUN_DEST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IND_FRT" source="IND_FRT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_CTA" source="COD_CTA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_CONS" source="COD_CONS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TP_LIGACAO" source="TP_LIGACAO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_GRUPO_TENSAO" source="COD_GRUPO_TENSAO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_MUN" source="COD_MUN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="UF_ID" source="UF_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PESO_LIQ" source="PESO_LIQ"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PESO_BRT" source="PESO_BRT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="QTD_VOL" source="QTD_VOL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DIRECT" source="DIRECT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TP_ASSINANTE" source="TP_ASSINANTE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUM_DOC_RMD" source="NUM_DOC_RMD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NRO_ORD" source="NRO_ORD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_AUT" source="COD_AUT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NOM_MOT" source="NOM_MOT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CPF" source="CPF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNPJ_FILIAL" source="CNPJ_FILIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IE_FILIAL" source="IE_FILIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IEST_FILIAL" source="IEST_FILIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IM_FILIAL" source="IM_FILIAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUFRAMA_PARTNER" source="SUFRAMA_PARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VAGAO" source="VAGAO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BALSA" source="BALSA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_CANC" source="DT_CANC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MARCA_VOL_TRANS" source="MARCA_VOL_TRANS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="RPS" source="RPS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIPO_RPS" source="TIPO_RPS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SYS_TIPO_NF" source="SYS_TIPO_NF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VL_FORN" source="VL_FORN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VL_SERV_NT" source="VL_SERV_NT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VL_TERC" source="VL_TERC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VL_DA" source="VL_DA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONS" source="CONS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VL_TOTAL_DOCUMENTO" source="VL_TOTAL_DOCUMENTO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NFE_SERV_NUM" source="NFE_SERV_NUM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HR_E_S" source="HR_E_S"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_AUTH" source="DT_AUTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HR_AUTH" source="HR_AUTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TIPO_OPER" source="TIPO_OPER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IND_FINAL" source="IND_FINAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRE_COMPRADOR" source="PRE_COMPRADOR"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CRT_BUPLA" source="CRT_BUPLA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="XMLVERS" source="XMLVERS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TPAMB" source="TPAMB"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DOCSTAT" source="DOCSTAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NOM_MEST" source="NOM_MEST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHV_COD_DIG" source="CHV_COD_DIG"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IE" source="IE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MUNICIPAL" source="MUNICIPAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IND_NAT_FRT" source="IND_NAT_FRT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PCO_CATEGORY" source="PCO_CATEGORY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NOME" source="NOME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ENDE" source="ENDE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUMERO" source="NUMERO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COMPL" source="COMPL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="BAIRRO" source="BAIRRO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DESC_MUN" source="DESC_MUN"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CEP" source="CEP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PAIS" source="PAIS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NF_SRV" source="NF_SRV"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MOEDA" source="MOEDA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INCOTERMS1" source="INCOTERMS1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IM" source="IM"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DOCREF" source="DOCREF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_LANCTO" source="DT_LANCTO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_CRIACAO" source="DT_CRIACAO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NOME_USUARIO" source="NOME_USUARIO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MANUAL" source="MANUAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="OBSERVACAO" source="OBSERVACAO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FUN_PARC" source="FUN_PARC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUM_DOC_CONTABIL" source="NUM_DOC_CONTABIL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CONTINGENCIA" source="CONTINGENCIA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TP_SERVICO" source="TP_SERVICO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHV_CONDICAO" source="CHV_CONDICAO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_EXTEMPORANEA" source="DT_EXTEMPORANEA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUM_UNIDADE_CONSUMIDORA" source="NUM_UNIDADE_CONSUMIDORA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FASE_UTILIZACAO" source="FASE_UTILIZACAO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NRO_TEL_PRINCIPAL" source="NRO_TEL_PRINCIPAL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TP_INFORMACAO" source="TP_INFORMACAO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="TP_CLIENTE" source="TP_CLIENTE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUBCLASSE_CONSUMO" source="SUBCLASSE_CONSUMO"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNPJ_EMITENTE" source="CNPJ_EMITENTE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VL_TOTAL_FATURA_DOC" source="VL_TOTAL_FATURA_DOC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_LEIT_ANT" source="DT_LEIT_ANT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DT_LEIT_ATU" source="DT_LEIT_ATU"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="INFORMACOES_ADICIONAIS" source="INFORMACOES_ADICIONAIS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NRO_FATURA" source="NRO_FATURA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_AUTH" source="COD_AUTH"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FONE" source="FONE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IND_IEDEST" source="IND_IEDEST"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CRT_PARTNER" source="CRT_PARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CNAE_PARTNER" source="CNAE_PARTNER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="IND_CPRB" source="IND_CPRB"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VL_MAT_TERC" source="VL_MAT_TERC"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="VL_SUB" source="VL_SUB"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CHV_CTE_REF" source="CHV_CTE_REF"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="DOCUMENT_STATUS" source="DOCUMENT_STATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NFNUM_UTILITIES" source="NFNUM_UTILITIES"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COD_CTA_HEADER" source="COD_CTA_HEADER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUM_DA" source="NUM_DA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="FIN_DOCE" source="FIN_DOCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MANDT$MANDT" source="MANDT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$NF_ID$NF_ID" source="NF_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$EMPRESA$EMPRESA" source="EMPRESA"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$FILIAL$FILIAL" source="FILIAL"/>
+    </input>
+    <joinAttribute name="JOIN$MANDT$MANDT"/>
+    <joinAttribute name="JOIN$NF_ID$NF_ID"/>
+    <joinAttribute name="JOIN$EMPRESA$EMPRESA"/>
+    <joinAttribute name="JOIN$FILIAL$FILIAL"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="J_TXT">
+  <attributes>
+    <attribute id="TXT" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TXT"/>
+      <keyMapping columnObjectName="J_TXT" columnName="TXT"/>
+    </attribute>
+    <attribute id="MANDT" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MANDT"/>
+      <keyMapping columnObjectName="J_TXT" columnName="MANDT"/>
+    </attribute>
+    <attribute id="NF_ID" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NF_ID"/>
+      <keyMapping columnObjectName="J_TXT" columnName="NF_ID"/>
+    </attribute>
+    <attribute id="EMPRESA" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMPRESA"/>
+      <keyMapping columnObjectName="J_TXT" columnName="EMPRESA"/>
+    </attribute>
+    <attribute id="FILIAL" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FILIAL"/>
+      <keyMapping columnObjectName="J_TXT" columnName="FILIAL"/>
+    </attribute>
+    <attribute id="IND_PGTO" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IND_PGTO"/>
+      <keyMapping columnObjectName="J_TXT" columnName="IND_PGTO"/>
+    </attribute>
+    <attribute id="DT_DOC" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DT_DOC"/>
+      <keyMapping columnObjectName="J_TXT" columnName="DT_DOC"/>
+    </attribute>
+    <attribute id="DT_E_S" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DT_E_S"/>
+      <keyMapping columnObjectName="J_TXT" columnName="DT_E_S"/>
+    </attribute>
+    <attribute id="SER" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SER"/>
+      <keyMapping columnObjectName="J_TXT" columnName="SER"/>
+    </attribute>
+    <attribute id="SUB" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUB"/>
+      <keyMapping columnObjectName="J_TXT" columnName="SUB"/>
+    </attribute>
+    <attribute id="COD_PART" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COD_PART"/>
+      <keyMapping columnObjectName="J_TXT" columnName="COD_PART"/>
+    </attribute>
+    <attribute id="TIPO_PART" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TIPO_PART"/>
+      <keyMapping columnObjectName="J_TXT" columnName="TIPO_PART"/>
+    </attribute>
+    <attribute id="VEIC_ID" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VEIC_ID"/>
+      <keyMapping columnObjectName="J_TXT" columnName="VEIC_ID"/>
+    </attribute>
+    <attribute id="NUM_DOC" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NUM_DOC"/>
+      <keyMapping columnObjectName="J_TXT" columnName="NUM_DOC"/>
+    </attribute>
+    <attribute id="CNPJ_CPF" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CNPJ_CPF"/>
+      <keyMapping columnObjectName="J_TXT" columnName="CNPJ_CPF"/>
+    </attribute>
+    <attribute id="IND_EMIT" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IND_EMIT"/>
+      <keyMapping columnObjectName="J_TXT" columnName="IND_EMIT"/>
+    </attribute>
+    <attribute id="TIPO_EMIT" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TIPO_EMIT"/>
+      <keyMapping columnObjectName="J_TXT" columnName="TIPO_EMIT"/>
+    </attribute>
+    <attribute id="COD_SIT" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COD_SIT"/>
+      <keyMapping columnObjectName="J_TXT" columnName="COD_SIT"/>
+    </attribute>
+    <attribute id="IND_OPER" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IND_OPER"/>
+      <keyMapping columnObjectName="J_TXT" columnName="IND_OPER"/>
+    </attribute>
+    <attribute id="FATURA_ID" order="20" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FATURA_ID"/>
+      <keyMapping columnObjectName="J_TXT" columnName="FATURA_ID"/>
+    </attribute>
+    <attribute id="COD_MOD" order="21" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COD_MOD"/>
+      <keyMapping columnObjectName="J_TXT" columnName="COD_MOD"/>
+    </attribute>
+    <attribute id="CHV_NFE" order="22" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHV_NFE"/>
+      <keyMapping columnObjectName="J_TXT" columnName="CHV_NFE"/>
+    </attribute>
+    <attribute id="UF" order="23" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="UF"/>
+      <keyMapping columnObjectName="J_TXT" columnName="UF"/>
+    </attribute>
+    <attribute id="CANCELADO" order="24" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CANCELADO"/>
+      <keyMapping columnObjectName="J_TXT" columnName="CANCELADO"/>
+    </attribute>
+    <attribute id="CHV_CTE" order="25" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHV_CTE"/>
+      <keyMapping columnObjectName="J_TXT" columnName="CHV_CTE"/>
+    </attribute>
+    <attribute id="TP_CT_E" order="26" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TP_CT_E"/>
+      <keyMapping columnObjectName="J_TXT" columnName="TP_CT_E"/>
+    </attribute>
+    <attribute id="COD_MUN_ORIG" order="27" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COD_MUN_ORIG"/>
+      <keyMapping columnObjectName="J_TXT" columnName="COD_MUN_ORIG"/>
+    </attribute>
+    <attribute id="COD_MUN_DEST" order="28" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COD_MUN_DEST"/>
+      <keyMapping columnObjectName="J_TXT" columnName="COD_MUN_DEST"/>
+    </attribute>
+    <attribute id="IND_FRT" order="29" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IND_FRT"/>
+      <keyMapping columnObjectName="J_TXT" columnName="IND_FRT"/>
+    </attribute>
+    <attribute id="COD_CTA" order="30" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COD_CTA"/>
+      <keyMapping columnObjectName="J_TXT" columnName="COD_CTA"/>
+    </attribute>
+    <attribute id="COD_CONS" order="31" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COD_CONS"/>
+      <keyMapping columnObjectName="J_TXT" columnName="COD_CONS"/>
+    </attribute>
+    <attribute id="TP_LIGACAO" order="32" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TP_LIGACAO"/>
+      <keyMapping columnObjectName="J_TXT" columnName="TP_LIGACAO"/>
+    </attribute>
+    <attribute id="COD_GRUPO_TENSAO" order="33" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COD_GRUPO_TENSAO"/>
+      <keyMapping columnObjectName="J_TXT" columnName="COD_GRUPO_TENSAO"/>
+    </attribute>
+    <attribute id="COD_MUN" order="34" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COD_MUN"/>
+      <keyMapping columnObjectName="J_TXT" columnName="COD_MUN"/>
+    </attribute>
+    <attribute id="UF_ID" order="35" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="UF_ID"/>
+      <keyMapping columnObjectName="J_TXT" columnName="UF_ID"/>
+    </attribute>
+    <attribute id="PESO_LIQ" order="36" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PESO_LIQ"/>
+      <keyMapping columnObjectName="J_TXT" columnName="PESO_LIQ"/>
+    </attribute>
+    <attribute id="PESO_BRT" order="37" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PESO_BRT"/>
+      <keyMapping columnObjectName="J_TXT" columnName="PESO_BRT"/>
+    </attribute>
+    <attribute id="QTD_VOL" order="38" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="QTD_VOL"/>
+      <keyMapping columnObjectName="J_TXT" columnName="QTD_VOL"/>
+    </attribute>
+    <attribute id="DIRECT" order="39" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DIRECT"/>
+      <keyMapping columnObjectName="J_TXT" columnName="DIRECT"/>
+    </attribute>
+    <attribute id="TP_ASSINANTE" order="40" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TP_ASSINANTE"/>
+      <keyMapping columnObjectName="J_TXT" columnName="TP_ASSINANTE"/>
+    </attribute>
+    <attribute id="NUM_DOC_RMD" order="41" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NUM_DOC_RMD"/>
+      <keyMapping columnObjectName="J_TXT" columnName="NUM_DOC_RMD"/>
+    </attribute>
+    <attribute id="NRO_ORD" order="42" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NRO_ORD"/>
+      <keyMapping columnObjectName="J_TXT" columnName="NRO_ORD"/>
+    </attribute>
+    <attribute id="COD_AUT" order="43" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COD_AUT"/>
+      <keyMapping columnObjectName="J_TXT" columnName="COD_AUT"/>
+    </attribute>
+    <attribute id="NOM_MOT" order="44" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NOM_MOT"/>
+      <keyMapping columnObjectName="J_TXT" columnName="NOM_MOT"/>
+    </attribute>
+    <attribute id="CPF" order="45" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CPF"/>
+      <keyMapping columnObjectName="J_TXT" columnName="CPF"/>
+    </attribute>
+    <attribute id="CNPJ_FILIAL" order="46" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CNPJ_FILIAL"/>
+      <keyMapping columnObjectName="J_TXT" columnName="CNPJ_FILIAL"/>
+    </attribute>
+    <attribute id="IE_FILIAL" order="47" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IE_FILIAL"/>
+      <keyMapping columnObjectName="J_TXT" columnName="IE_FILIAL"/>
+    </attribute>
+    <attribute id="IEST_FILIAL" order="48" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IEST_FILIAL"/>
+      <keyMapping columnObjectName="J_TXT" columnName="IEST_FILIAL"/>
+    </attribute>
+    <attribute id="IM_FILIAL" order="49" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IM_FILIAL"/>
+      <keyMapping columnObjectName="J_TXT" columnName="IM_FILIAL"/>
+    </attribute>
+    <attribute id="SUFRAMA_PARTNER" order="50" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUFRAMA_PARTNER"/>
+      <keyMapping columnObjectName="J_TXT" columnName="SUFRAMA_PARTNER"/>
+    </attribute>
+    <attribute id="VAGAO" order="51" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VAGAO"/>
+      <keyMapping columnObjectName="J_TXT" columnName="VAGAO"/>
+    </attribute>
+    <attribute id="BALSA" order="52" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BALSA"/>
+      <keyMapping columnObjectName="J_TXT" columnName="BALSA"/>
+    </attribute>
+    <attribute id="DT_CANC" order="53" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DT_CANC"/>
+      <keyMapping columnObjectName="J_TXT" columnName="DT_CANC"/>
+    </attribute>
+    <attribute id="MARCA_VOL_TRANS" order="54" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MARCA_VOL_TRANS"/>
+      <keyMapping columnObjectName="J_TXT" columnName="MARCA_VOL_TRANS"/>
+    </attribute>
+    <attribute id="RPS" order="55" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="RPS"/>
+      <keyMapping columnObjectName="J_TXT" columnName="RPS"/>
+    </attribute>
+    <attribute id="TIPO_RPS" order="56" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TIPO_RPS"/>
+      <keyMapping columnObjectName="J_TXT" columnName="TIPO_RPS"/>
+    </attribute>
+    <attribute id="SYS_TIPO_NF" order="57" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SYS_TIPO_NF"/>
+      <keyMapping columnObjectName="J_TXT" columnName="SYS_TIPO_NF"/>
+    </attribute>
+    <attribute id="VL_FORN" order="58" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VL_FORN"/>
+      <keyMapping columnObjectName="J_TXT" columnName="VL_FORN"/>
+    </attribute>
+    <attribute id="VL_SERV_NT" order="59" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VL_SERV_NT"/>
+      <keyMapping columnObjectName="J_TXT" columnName="VL_SERV_NT"/>
+    </attribute>
+    <attribute id="VL_TERC" order="60" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VL_TERC"/>
+      <keyMapping columnObjectName="J_TXT" columnName="VL_TERC"/>
+    </attribute>
+    <attribute id="VL_DA" order="61" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VL_DA"/>
+      <keyMapping columnObjectName="J_TXT" columnName="VL_DA"/>
+    </attribute>
+    <attribute id="CONS" order="62" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CONS"/>
+      <keyMapping columnObjectName="J_TXT" columnName="CONS"/>
+    </attribute>
+    <attribute id="VL_TOTAL_DOCUMENTO" order="63" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VL_TOTAL_DOCUMENTO"/>
+      <keyMapping columnObjectName="J_TXT" columnName="VL_TOTAL_DOCUMENTO"/>
+    </attribute>
+    <attribute id="NFE_SERV_NUM" order="64" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NFE_SERV_NUM"/>
+      <keyMapping columnObjectName="J_TXT" columnName="NFE_SERV_NUM"/>
+    </attribute>
+    <attribute id="HR_E_S" order="65" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="HR_E_S"/>
+      <keyMapping columnObjectName="J_TXT" columnName="HR_E_S"/>
+    </attribute>
+    <attribute id="DT_AUTH" order="66" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DT_AUTH"/>
+      <keyMapping columnObjectName="J_TXT" columnName="DT_AUTH"/>
+    </attribute>
+    <attribute id="HR_AUTH" order="67" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="HR_AUTH"/>
+      <keyMapping columnObjectName="J_TXT" columnName="HR_AUTH"/>
+    </attribute>
+    <attribute id="TIPO_OPER" order="68" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TIPO_OPER"/>
+      <keyMapping columnObjectName="J_TXT" columnName="TIPO_OPER"/>
+    </attribute>
+    <attribute id="IND_FINAL" order="69" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IND_FINAL"/>
+      <keyMapping columnObjectName="J_TXT" columnName="IND_FINAL"/>
+    </attribute>
+    <attribute id="PRE_COMPRADOR" order="70" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRE_COMPRADOR"/>
+      <keyMapping columnObjectName="J_TXT" columnName="PRE_COMPRADOR"/>
+    </attribute>
+    <attribute id="CRT_BUPLA" order="71" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CRT_BUPLA"/>
+      <keyMapping columnObjectName="J_TXT" columnName="CRT_BUPLA"/>
+    </attribute>
+    <attribute id="XMLVERS" order="72" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="XMLVERS"/>
+      <keyMapping columnObjectName="J_TXT" columnName="XMLVERS"/>
+    </attribute>
+    <attribute id="TPAMB" order="73" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TPAMB"/>
+      <keyMapping columnObjectName="J_TXT" columnName="TPAMB"/>
+    </attribute>
+    <attribute id="DOCSTAT" order="74" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DOCSTAT"/>
+      <keyMapping columnObjectName="J_TXT" columnName="DOCSTAT"/>
+    </attribute>
+    <attribute id="NOM_MEST" order="75" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NOM_MEST"/>
+      <keyMapping columnObjectName="J_TXT" columnName="NOM_MEST"/>
+    </attribute>
+    <attribute id="CHV_COD_DIG" order="76" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHV_COD_DIG"/>
+      <keyMapping columnObjectName="J_TXT" columnName="CHV_COD_DIG"/>
+    </attribute>
+    <attribute id="IE" order="77" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IE"/>
+      <keyMapping columnObjectName="J_TXT" columnName="IE"/>
+    </attribute>
+    <attribute id="MUNICIPAL" order="78" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Municipal Fiscal Document"/>
+      <keyMapping columnObjectName="J_TXT" columnName="MUNICIPAL"/>
+    </attribute>
+    <attribute id="IND_NAT_FRT" order="79" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IND_NAT_FRT"/>
+      <keyMapping columnObjectName="J_TXT" columnName="IND_NAT_FRT"/>
+    </attribute>
+    <attribute id="PCO_CATEGORY" order="80" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PCO_CATEGORY"/>
+      <keyMapping columnObjectName="J_TXT" columnName="PCO_CATEGORY"/>
+    </attribute>
+    <attribute id="NOME" order="81" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NOME"/>
+      <keyMapping columnObjectName="J_TXT" columnName="NOME"/>
+    </attribute>
+    <attribute id="ENDE" order="82" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ENDE"/>
+      <keyMapping columnObjectName="J_TXT" columnName="ENDE"/>
+    </attribute>
+    <attribute id="NUMERO" order="83" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NUMERO"/>
+      <keyMapping columnObjectName="J_TXT" columnName="NUMERO"/>
+    </attribute>
+    <attribute id="COMPL" order="84" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COMPL"/>
+      <keyMapping columnObjectName="J_TXT" columnName="COMPL"/>
+    </attribute>
+    <attribute id="BAIRRO" order="85" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="BAIRRO"/>
+      <keyMapping columnObjectName="J_TXT" columnName="BAIRRO"/>
+    </attribute>
+    <attribute id="DESC_MUN" order="86" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DESC_MUN"/>
+      <keyMapping columnObjectName="J_TXT" columnName="DESC_MUN"/>
+    </attribute>
+    <attribute id="CEP" order="87" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CEP"/>
+      <keyMapping columnObjectName="J_TXT" columnName="CEP"/>
+    </attribute>
+    <attribute id="PAIS" order="88" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PAIS"/>
+      <keyMapping columnObjectName="J_TXT" columnName="PAIS"/>
+    </attribute>
+    <attribute id="NF_SRV" order="89" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NF_SRV"/>
+      <keyMapping columnObjectName="J_TXT" columnName="NF_SRV"/>
+    </attribute>
+    <attribute id="MOEDA" order="90" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="WAERK"/>
+      <keyMapping columnObjectName="J_TXT" columnName="MOEDA"/>
+    </attribute>
+    <attribute id="INCOTERMS1" order="91" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="INCOTERMS1"/>
+      <keyMapping columnObjectName="J_TXT" columnName="INCOTERMS1"/>
+    </attribute>
+    <attribute id="IM" order="92" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MUNINS"/>
+      <keyMapping columnObjectName="J_TXT" columnName="IM"/>
+    </attribute>
+    <attribute id="DOCREF" order="93" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DOCREF"/>
+      <keyMapping columnObjectName="J_TXT" columnName="DOCREF"/>
+    </attribute>
+    <attribute id="DT_LANCTO" order="94" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DT_LANCTO"/>
+      <keyMapping columnObjectName="J_TXT" columnName="DT_LANCTO"/>
+    </attribute>
+    <attribute id="DT_CRIACAO" order="95" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DT_CRIACAO"/>
+      <keyMapping columnObjectName="J_TXT" columnName="DT_CRIACAO"/>
+    </attribute>
+    <attribute id="NOME_USUARIO" order="96" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NOME_USUARIO"/>
+      <keyMapping columnObjectName="J_TXT" columnName="NOME_USUARIO"/>
+    </attribute>
+    <attribute id="MANUAL" order="97" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MANUAL"/>
+      <keyMapping columnObjectName="J_TXT" columnName="MANUAL"/>
+    </attribute>
+    <attribute id="OBSERVACAO" order="98" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="OBSERVACAO"/>
+      <keyMapping columnObjectName="J_TXT" columnName="OBSERVACAO"/>
+    </attribute>
+    <attribute id="FUN_PARC" order="99" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FUN_PARC"/>
+      <keyMapping columnObjectName="J_TXT" columnName="FUN_PARC"/>
+    </attribute>
+    <attribute id="NUM_DOC_CONTABIL" order="100" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NUM_DOC_CONTABIL"/>
+      <keyMapping columnObjectName="J_TXT" columnName="NUM_DOC_CONTABIL"/>
+    </attribute>
+    <attribute id="CONTINGENCIA" order="101" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CONTINGENCIA"/>
+      <keyMapping columnObjectName="J_TXT" columnName="CONTINGENCIA"/>
+    </attribute>
+    <attribute id="TP_SERVICO" order="102" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TP_SERVICO"/>
+      <keyMapping columnObjectName="J_TXT" columnName="TP_SERVICO"/>
+    </attribute>
+    <attribute id="CHV_CONDICAO" order="103" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHV_CONDICAO"/>
+      <keyMapping columnObjectName="J_TXT" columnName="CHV_CONDICAO"/>
+    </attribute>
+    <attribute id="DT_EXTEMPORANEA" order="104" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DT_EXTEMPORANEA"/>
+      <keyMapping columnObjectName="J_TXT" columnName="DT_EXTEMPORANEA"/>
+    </attribute>
+    <attribute id="NUM_UNIDADE_CONSUMIDORA" order="105" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NUM_UNIDADE_CONSUMIDORA"/>
+      <keyMapping columnObjectName="J_TXT" columnName="NUM_UNIDADE_CONSUMIDORA"/>
+    </attribute>
+    <attribute id="FASE_UTILIZACAO" order="106" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FASE_UTILIZACAO"/>
+      <keyMapping columnObjectName="J_TXT" columnName="FASE_UTILIZACAO"/>
+    </attribute>
+    <attribute id="NRO_TEL_PRINCIPAL" order="107" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NRO_TEL_PRINCIPAL"/>
+      <keyMapping columnObjectName="J_TXT" columnName="NRO_TEL_PRINCIPAL"/>
+    </attribute>
+    <attribute id="TP_INFORMACAO" order="108" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TP_INFORMACAO"/>
+      <keyMapping columnObjectName="J_TXT" columnName="TP_INFORMACAO"/>
+    </attribute>
+    <attribute id="TP_CLIENTE" order="109" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TP_CLIENTE"/>
+      <keyMapping columnObjectName="J_TXT" columnName="TP_CLIENTE"/>
+    </attribute>
+    <attribute id="SUBCLASSE_CONSUMO" order="110" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUBCLASSE_CONSUMO"/>
+      <keyMapping columnObjectName="J_TXT" columnName="SUBCLASSE_CONSUMO"/>
+    </attribute>
+    <attribute id="CNPJ_EMITENTE" order="111" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CNPJ_EMITENTE"/>
+      <keyMapping columnObjectName="J_TXT" columnName="CNPJ_EMITENTE"/>
+    </attribute>
+    <attribute id="VL_TOTAL_FATURA_DOC" order="112" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VL_TOTAL_FATURA_DOC"/>
+      <keyMapping columnObjectName="J_TXT" columnName="VL_TOTAL_FATURA_DOC"/>
+    </attribute>
+    <attribute id="DT_LEIT_ANT" order="113" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DT_LEIT_ANT"/>
+      <keyMapping columnObjectName="J_TXT" columnName="DT_LEIT_ANT"/>
+    </attribute>
+    <attribute id="DT_LEIT_ATU" order="114" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DT_LEIT_ATU"/>
+      <keyMapping columnObjectName="J_TXT" columnName="DT_LEIT_ATU"/>
+    </attribute>
+    <attribute id="INFORMACOES_ADICIONAIS" order="115" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="INFORMACOES_ADICIONAIS"/>
+      <keyMapping columnObjectName="J_TXT" columnName="INFORMACOES_ADICIONAIS"/>
+    </attribute>
+    <attribute id="NRO_FATURA" order="116" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NRO_FATURA"/>
+      <keyMapping columnObjectName="J_TXT" columnName="NRO_FATURA"/>
+    </attribute>
+    <attribute id="COD_AUTH" order="117" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COD_AUTH"/>
+      <keyMapping columnObjectName="J_TXT" columnName="COD_AUTH"/>
+    </attribute>
+    <attribute id="FONE" order="118" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FONE"/>
+      <keyMapping columnObjectName="J_TXT" columnName="FONE"/>
+    </attribute>
+    <attribute id="IND_IEDEST" order="119" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IND_IEDEST"/>
+      <keyMapping columnObjectName="J_TXT" columnName="IND_IEDEST"/>
+    </attribute>
+    <attribute id="CRT_PARTNER" order="120" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CRT_PARTNER"/>
+      <keyMapping columnObjectName="J_TXT" columnName="CRT_PARTNER"/>
+    </attribute>
+    <attribute id="CNAE_PARTNER" order="121" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CNAE_PARTNER"/>
+      <keyMapping columnObjectName="J_TXT" columnName="CNAE_PARTNER"/>
+    </attribute>
+    <attribute id="IND_CPRB" order="122" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="IND_CPRB"/>
+      <keyMapping columnObjectName="J_TXT" columnName="IND_CPRB"/>
+    </attribute>
+    <attribute id="VL_MAT_TERC" order="123" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VL_MAT_TERC"/>
+      <keyMapping columnObjectName="J_TXT" columnName="VL_MAT_TERC"/>
+    </attribute>
+    <attribute id="VL_SUB" order="124" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="VL_SUB"/>
+      <keyMapping columnObjectName="J_TXT" columnName="VL_SUB"/>
+    </attribute>
+    <attribute id="CHV_CTE_REF" order="125" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CHV_CTE_REF"/>
+      <keyMapping columnObjectName="J_TXT" columnName="CHV_CTE_REF"/>
+    </attribute>
+    <attribute id="DOCUMENT_STATUS" order="126" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DOCUMENT_STATUS"/>
+      <keyMapping columnObjectName="J_TXT" columnName="DOCUMENT_STATUS"/>
+    </attribute>
+    <attribute id="NFNUM_UTILITIES" order="127" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NFNUM_UTILITIES"/>
+      <keyMapping columnObjectName="J_TXT" columnName="NFNUM_UTILITIES"/>
+    </attribute>
+    <attribute id="COD_CTA_HEADER" order="128" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COD_CTA_HEADER"/>
+      <keyMapping columnObjectName="J_TXT" columnName="COD_CTA_HEADER"/>
+    </attribute>
+    <attribute id="NUM_DA" order="129" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NUM_DA"/>
+      <keyMapping columnObjectName="J_TXT" columnName="NUM_DA"/>
+    </attribute>
+    <attribute id="FIN_DOCE" order="130" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FIN_DOCE"/>
+      <keyMapping columnObjectName="J_TXT" columnName="FIN_DOCE"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="343.2644203178371" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="P_EMP" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="91.99999999999991" y="696.9999964237213"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="P_NF_DOC" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="301.9999999999999" y="696.9999964237213"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="J_NF_DOC" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="118.66666666666657" y="536.9999976158142"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="P_NF_DOC" modelObjectNameSpace="J_NF_DOC" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="146.10791015625"/>
+    </shape>
+    <shape modelObjectName="P_EMP" modelObjectNameSpace="J_NF_DOC" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="192.5625"/>
+    </shape>
+    <shape expanded="true" modelObjectName="P_PARAM" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="395.83959680791406" y="536.9999976158142"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="J_PARAM" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="329.7346324379398" y="376.9999988079071"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="J_NF_DOC" modelObjectNameSpace="J_PARAM" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="72" y="30"/>
+      <rectangleSize width="146.10791015625"/>
+    </shape>
+    <shape modelObjectName="P_PARAM" modelObjectNameSpace="J_PARAM" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="160.57763671875"/>
+    </shape>
+    <shape expanded="true" modelObjectName="J_TXT" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="329.7346324379398" y="236.9999988079071"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="adejo.view::NF_INF_COMPL" modelObjectNameSpace="J_TXT" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="224.6875"/>
+    </shape>
+    <shape modelObjectName="J_PARAM" modelObjectNameSpace="J_TXT" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="146.10791015625"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

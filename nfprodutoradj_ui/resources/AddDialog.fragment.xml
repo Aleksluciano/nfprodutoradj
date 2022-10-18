@@ -1,0 +1,29 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog id="AddDialog" title="Adicionar tipo de nota">
+		<VBox alignItems="Center">
+			<VBox alignItems="Start">
+				<Label required="true" text="Empresa:" labelFor="input-company" class="margin1"/>
+				<ComboBox change=".changeCompany()" id="input-company" selectedKey="{/SelectedCompany}"
+					items="{ path: '/CompanyCollection', sorter: { path: 'Name' } }">
+					<core:Item key="{Id}" text="{Name}"/>
+				</ComboBox>
+				<Label required="true" text="Estabelecimento:" labelFor="input-brancha"/>
+				<ComboBox id="input-brancha" selectedKey="{/SelectedBranch}" items="{ path: '/BranchCollection', sorter: { path: 'Name' } }">
+					<core:Item key="{Id}" text="{Name}"/>
+				</ComboBox>
+				<Label required="true" text="Tipo de Nota:" labelFor="input-tipo"/>
+				<ComboBox id="input-tipo" selectedKey="{/SelectedTipo}" items="{ path: '/TipoCollection', sorter: { path: 'Name' } }">
+					<core:Item key="{Id}" text="{Name}"/>
+				</ComboBox>
+				<Label required="true" text='Período inicial:' labelFor="DP10"/>
+				<DatePicker id="DP10" value="{/SelectedPeriod}" displayFormat="dd-MM-yyyy" change="handleChange" class="sapUiSmallMarginBottom disabled"/>
+				<Label required="true" text='Período final:' labelFor="DP11"/>
+				<DatePicker id="DP11" value="{/SelectedPeriod2}" displayFormat="dd-MM-yyyy" change="handleChange2" class="sapUiSmallMarginBottom disabled"/>
+			</VBox>
+		</VBox>
+		<buttons>
+			<Button text="Cancelar" width="100px" press=".onClose"/>
+			<Button type="Emphasized" text="Salvar" press=".save"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

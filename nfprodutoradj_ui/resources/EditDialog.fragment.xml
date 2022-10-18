@@ -1,0 +1,22 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog id="EditDialog" title="Editar tipo de nota">
+		<VBox alignItems="Center">
+			<VBox alignItems="Start">
+				<Label text="Empresa:" labelFor="input-companye" class="margin1"/>
+				<Input id="input-companye" class="sapUiSmallMarginBottom" type="Text" enabled="true" editable="false" value="{/EMPRESA}"/>
+				<Label text="Estabelecimento:" labelFor="input-branche"/>
+				<Input id="input-branche" class="sapUiSmallMarginBottom" type="Text" enabled="true" editable="false" value="{/FILIAL}"/>
+				<Label text="Tipo de nota:" labelFor="input-tipoe"/>
+				<Input id="input-tipoe" class="sapUiSmallMarginBottom" type="Text" enabled="true" editable="false" value="{/TIPO_NF}"/>
+				<Label text="Período Inicial:" labelFor="input-periode"/>
+				<Input id="input-periode" class="sapUiSmallMarginBottom" type="Text" enabled="true" editable="false" value="{/DT_INI}"/>
+				<Label required="true" text='Período final:' labelFor="DP11e"/>
+				<DatePicker id="DP11e" value="{/DT_FIN}" displayFormat="dd-MM-yyyy" change="handleChange2" class="sapUiSmallMarginBottom disabled"/>
+			</VBox>
+		</VBox>
+		<buttons>
+			<Button text="Cancelar" width="100px" press=".onClose2"/>
+			<Button type="Emphasized" text="Salvar" press=".save2"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

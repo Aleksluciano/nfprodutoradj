@@ -1,0 +1,113 @@
+ID: nfprodutoradj
+_schema-version: '2.1'
+version: 0.0.1
+
+modules:
+  - name: nfprodutoradj_ui
+    type: html5
+    path: nfprodutoradj_ui
+    provides:
+      - name: nfprodutor_ui_dest
+        public: true
+        properties:
+          url: '${default-url}'
+    properties:
+      CORS:
+        - uriPattern: .
+          allowedMethods:
+            - GET
+            - POST
+          allowedOrigin:
+            - host: '*'
+      SAP_JWT_TRUST_ACL:
+        - clientid: '*'
+          identityzone: '*'
+    requires:
+      - name: flp-adejopad-nfprodutor-client
+      - name: nfprodutor-UAA-service
+      - name: nfprodutoradj_server_api
+        group: destinations
+        properties:
+          name: core-backend
+          url: '~{url}'
+          forwardAuthToken: true
+      - name: sapui5-provider
+        properties:
+          sapui5url: '~{url}'
+  - name: nfprodutoradj_db
+    type: hdb
+    path: nfprodutoradj_db
+    requires:
+      - name: hdi_nfprodutoradj_db
+        properties:
+          TARGET_CONTAINER: '~{hdi-container-name}'
+      - name: cross-container-service-1
+        group: SERVICE_REPLACEMENTS
+        properties:
+          key: ServiceName_1
+          service: '~{the-service-name}'
+  
+      - name: cross-container-service-2
+        group: SERVICE_REPLACEMENTS
+
+        properties:
+          key: ServiceName_2
+          service: ~{the-service-name}
+                            
+
+
+  - name: nfprodutoradj_server
+    type: nodejs
+    path: nfprodutoradj_server
+    provides:
+      - name: nfprodutoradj_server_api
+        public: true
+        properties:
+          url: '${default-url}'
+    properties:
+      CORS:
+        - uriPattern: .
+          allowedMethods:
+            - GET
+            - POST
+          allowedOrigin:
+            - host: '*'
+      SAP_JWT_TRUST_ACL:
+        - clientid: '*'
+          identityzone: '*'
+    requires:
+      - name: nfprodutor-UAA-service
+      - name: hdi_nfprodutoradj_db
+resources:
+  - name: nfprodutor-UAA-service
+    type: com.sap.xs.uaa-space
+  - name: hdi_nfprodutoradj_db
+    properties:
+      hdi-container-name: '${service-name}'
+    type: com.sap.xs.hdi-container
+  - name: cross-container-service-1
+    parameters:
+      service-name: CROSS_SCHEMA_ACCESS
+    properties:
+      the-service-name: '${service-name}'
+    type: org.cloudfoundry.existing-service
+  - name: flp-adejopad-nfprodutor-client
+    type: com.sap.portal.site-content
+    parameters:
+      config:
+        siteId: adejopad
+  - name: sapui5-provider
+    parameters:
+      provider-id: 'com.sap.ui5.dist.sapui5-dist-xsa.XSAC_UI5_FESV6:sapui5_fesv6'
+      version: '>=1.60.0'
+      provider-nid: mta
+    type: configuration
+
+
+  - name: cross-container-service-2
+    parameters:
+       service-name: CROSS_SCHEMA_ACCESS
+    properties:
+       the-service-name: ${service-name}
+    type: org.cloudfoundry.existing-service
+

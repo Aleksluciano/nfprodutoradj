@@ -1,0 +1,124 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:l="sap.ui.layout" displayBlock="true"
+	controllerName="nfprodutoradj_ui.Page">
+	<Page title="NF Produtor" titleLevel="H1" showHeader="true" class="sapUiContentPadding">
+		<Panel width="auto" class="sapUiResponsiveMargin">
+			<content >
+				<HBox justifyContent="SpaceBetween">
+					<VBox>
+						<Label required="true" text="Empresa:" labelFor="input-company"/>
+						<ComboBox change=".changeCompany()" id="input-company" selectedKey="{/SelectedCompany}"
+							items="{ path: '/CompanyCollection', sorter: { path: 'Name' } }">
+							<core:Item key="{Id}" text="{Name}"/>
+						</ComboBox>
+					</VBox>
+					<VBox>
+						<Label required="true" text="De Estab:" labelFor="input-branch"/>
+						<ComboBox id="input-brancha" selectedKey="{/SelectedBranch}" items="{ path: '/BranchCollection', sorter: { path: 'Name' } }">
+							<core:Item key="{Id}" text="{Name}"/>
+						</ComboBox>
+					</VBox>
+					<VBox>
+						<Label required="true" text="Até Estab:" labelFor="input-branch"/>
+						<ComboBox id="input-branchz" selectedKey="{/SelectedBranch2}" items="{ path: '/BranchCollection2', sorter: { path: 'Name' } }">
+							<core:Item key="{Id}" text="{Name}"/>
+						</ComboBox>
+					</VBox>
+					<VBox>
+						<Label text="NF Id:" labelFor="input-nfid"/>
+						<Input id="input-nfid" value="{/NfidValue}"></Input>
+					</VBox>
+					<l:VerticalLayout class="sapUiContentPadding" width="100%">
+						<l:dependents>
+							<core:Fragment fragmentName="nfprodutoradj_ui.BusyDialog" type="XML"/>
+						</l:dependents>
+					</l:VerticalLayout>
+				</HBox>
+				<HBox justifyContent="SpaceBetween" width="58.5%">
+					<VBox>
+						<Label required="true" text='Período inicial:' labelFor="DP10"/>
+						<DatePicker id="DP10" value="{/SelectedPeriod}" displayFormat="dd-MM-yyyy" class="sapUiSmallMarginBottom disabled"/>
+					</VBox>
+					<VBox>
+						<Label required="true" text='Período final:' labelFor="DP11"/>
+						<DatePicker id="DP11" value="{/SelectedPeriod2}" displayFormat="dd-MM-yyyy" class="sapUiSmallMarginBottom disabled"/>
+					</VBox>
+					<VBox>
+						<Label required="true" labelFor="btnTipoNota" text='Parâmetro:'/>
+						<Button id="btnTipoNota" press=".onTable" icon="sap-icon://action-settings" text="Tipo Nota"/>
+					</VBox>
+				</HBox>
+				<VBox>
+					<CheckBox class="checkBoxMargin" text="Simulação" selected="{/Simulation}"/>
+				</VBox>
+			</content>
+		</Panel>
+		<Panel width="auto" class="sapUiResponsiveMargin" accessibleRole="Region">
+			<Table items="{ path: '/CHV'}" id="tableChv">
+				<columns >
+					<Column >
+						<Text text="EMPRESA"/>
+					</Column>
+					<Column >
+						<Text text="FILIAL"/>
+					</Column>
+					<Column >
+						<Text text="NF_ID"/>
+					</Column>
+					<Column >
+						<Text text="NUM_DOC"/>
+					</Column>
+					<Column >
+						<Text text="COD_SIT"/>
+					</Column>
+					<Column >
+						<Text text="DT_E_S"/>
+					</Column>
+					<Column >
+						<Text text="CHV_NFE"/>
+					</Column>
+					<Column >
+						<Text text="STATUS"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem >
+						<cells>
+							<Text text="{EMPRESA}"/>
+						</cells>
+						<cells>
+							<Text text="{FILIAL}"/>
+						</cells>
+						<cells>
+							<Text text="{NF_ID}"/>
+						</cells>
+						<cells>
+							<Text text="{NUM_DOC}"/>
+						</cells>
+						<cells>
+							<Text text="{COD_SIT}"/>
+						</cells>
+						<cells>
+							<Text text="{DT_E_S}"/>
+						</cells>
+						<cells>
+							<Text text="{CHV_NFE}"/>
+						</cells>
+						<cells>
+							<Text text="{STATUS}" id="status" class="textColor">
+								<customData>
+									<core:CustomData key="mydata" value="{STATUS}" writeToDom="true"/>
+								</customData>
+							</Text>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</Panel>
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button type="Emphasized" text="Gerar" press="onPress"/>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>

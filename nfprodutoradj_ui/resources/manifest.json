@@ -1,0 +1,80 @@
+{
+	"sap.app": {
+		"id": "nfprodutoradj_ui",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"crossNavigation": {
+			"inbounds": {
+				"nfprodutoradj_uiShow": {
+					"title": "nfprodutoradj_ui",
+					"icon": "sap-icon://share-2",
+					"semanticObject": "nfprodutoradj_ui",
+					"action": "show",
+					"deviceTypes": {
+						"desktop": true,
+						"tablet": true,
+						"phone": true
+					}
+				}
+			},
+			"outbounds": {}
+		}
+	},
+	"sap.ui5": {
+		"_version": "1.2.0",
+		"componentName": "nfprodutoradj_ui",
+		"rootView": {
+			"viewName": "nfprodutoradj_ui.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"type": "View",
+				"viewType": "XML",
+				"path": "nfprodutoradj_ui",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"transition": "slide",
+				"async": true
+			},
+			"routes": [{
+				"pattern": "",
+				"name": "appPage",
+				"target": "page"
+			},
+			{
+				"pattern": "table",
+				"name": "appTable",
+				"target": "table"
+			}],
+			"targets": {
+				"page": {
+					"id": "page",
+					"name": "Page",
+					"level": 1
+				},
+				"table": {
+					"id": "table",
+					"name": "Table",
+					"transition":"slide"
+				}
+			}
+		}
+	},
+	"sap.platform.cf": {},
+	"sap.platform.runtime": {
+		"componentProperties": {
+			"url": "/"
+		}
+	}
+}

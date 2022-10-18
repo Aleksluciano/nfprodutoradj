@@ -1,0 +1,8 @@
+ROW TABLE "nfprodutoradj.nfprodutoradj_db.data::TIPO_NF" (
+     "EMPRESA" NVARCHAR(4) COMMENT 'Empresa',
+	 "FILIAL" NVARCHAR(4) COMMENT 'Filial',
+	 "SYS_TIPO_NF" NVARCHAR(2) COMMENT 'Tipo de nota fiscal',
+	 "DT_INI" NVARCHAR(8) COMMENT 'Data de referência inicial',
+	 "DT_FIN" NVARCHAR(8) COMMENT 'Data de referência final',
+	 PRIMARY KEY ("EMPRESA","FILIAL","SYS_TIPO_NF","DT_INI"))
+	 COMMENT 'Parâmetros para determinar tipo de nota fiscal'

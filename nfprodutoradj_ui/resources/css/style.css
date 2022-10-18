@@ -1,0 +1,19 @@
+.disabled input{
+ pointer-events: none;
+ color: transparent;
+ text-shadow: 0 0 0 gray;
+
+ }
+ 
+.margin1 {
+	margin-top: 0.5em !important;
+}
+
+.checkBoxMargin{
+
+		margin-bottom:1.5em;
+}
+
+.textColor[data-mydata="Simulado"] { color:blue !important; }
+.textColor[data-mydata="Processado"] { color:green !important; }
+

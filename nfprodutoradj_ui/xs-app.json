@@ -1,0 +1,62 @@
+{
+	"welcomeFile": "index.html",
+	"authenticationMethod": "route",
+	"routes": [{
+		"source": "/nfprodutor/node(.*)",
+		"destination": "core-backend",
+		"target": "/node",
+		"csrfProtection": true,
+		"authenticationType": "xsuaa"
+	}, {
+		"source": "/nfprodutor/data(.*)",
+		"destination": "core-backend",
+		"target": "/data",
+		"csrfProtection": true,
+		"authenticationType": "xsuaa"
+	}, {
+		"source": "/nfprodutor/change(.*)",
+		"destination": "core-backend",
+		"target": "/change",
+		"csrfProtection": false,
+		"authenticationType": "xsuaa"
+	}, {
+		"source": "/nfprodutor/tiponf/add(.*)",
+		"destination": "core-backend",
+		"target": "/tiponf/add",
+		"csrfProtection": false,
+		"authenticationType": "xsuaa"
+	}, {
+		"source": "/nfprodutor/tiponf/delete(.*)",
+		"destination": "core-backend",
+		"target": "/tiponf/delete",
+		"csrfProtection": false,
+		"authenticationType": "xsuaa"
+	},  {
+		"source": "/nfprodutor/tiponf/edit(.*)",
+		"destination": "core-backend",
+		"target": "/tiponf/edit",
+		"csrfProtection": false,
+		"authenticationType": "xsuaa"
+	},{
+		"source": "/nfprodutor/tiponf/alldata(.*)",
+		"destination": "core-backend",
+		"target": "/tiponf/alldata",
+		"csrfProtection": false,
+		"authenticationType": "xsuaa"
+	},{
+		"source": "/nfprodutor_ui_dest/(.*)$",
+		"localDir": "resources",
+		"authenticationType": "xsuaa",
+		"target": "$1"
+	}, {
+		"source": "/(.*)",
+		"localDir": "resources",
+		"authenticationType": "xsuaa",
+		"replace": {
+			"pathSuffixes": [
+				"index.html"
+			],
+			"vars": ["sapui5url"]
+		}
+	}]
+}
